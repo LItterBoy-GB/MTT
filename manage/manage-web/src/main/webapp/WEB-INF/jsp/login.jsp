@@ -23,7 +23,7 @@
 	        </div>
        	</div>
     </div>
-    
+    <script src="/js/jquery.min.js"></script>
     <script type="text/javascript">
     	$("#login").click(function(){
     		var username = $("[name=username]").val();
