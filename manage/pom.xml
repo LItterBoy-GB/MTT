@@ -19,6 +19,19 @@
         <module>manager-service</module>
         <module>manage-web</module>
     </modules>
-
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <port>8080</port>
+                    <path>/</path>
+                    <url>http://127.0.0.1:8080/manager/index</url>
+                    <username>tomcat</username>
+                    <password>tomcat</password>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
