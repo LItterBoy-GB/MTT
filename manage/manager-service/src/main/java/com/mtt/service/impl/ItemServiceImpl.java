@@ -7,9 +7,11 @@ import com.mtt.pojo.TbItem;
 import com.mtt.service.ItemService;
 import com.mtt.util.pojo.EasyUIResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ItemServiceImpl implements ItemService {
     @Autowired
     private TbItemMapper itemMapper;
