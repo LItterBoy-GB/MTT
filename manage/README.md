@@ -6,4 +6,6 @@
 * 后台技术  
 　　框架： Spring + SpringMVC + Mybatis  
 　　前端： EasyUI  
-　　数据库：MySQL
+　　数据库：MySQL  
+* 遇到的问题  
+　　自动扫描的各种bean 要记得写注解

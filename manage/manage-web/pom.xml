@@ -25,7 +25,5 @@
     </dependencies>
     <build>
         <finalName>manage-web</finalName>
-        <plugins>
-        </plugins>
     </build>
 </project>
