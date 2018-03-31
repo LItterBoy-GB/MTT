@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+
 @Controller
 @RequestMapping("/item")
 public class ItemController {
@@ -22,8 +24,6 @@ public class ItemController {
                                     @RequestParam(defaultValue="30")Integer rows) throws Exception {
         //查询商品列表
         EasyUIResult result = itemService.getItemList(page, rows);
-        System.out.println(result);
         return result;
     }
-
 }
