@@ -4,6 +4,7 @@ import com.mtt.service.PictureService;
 import com.mtt.util.FtpUtil;
 import com.mtt.util.IDUtil;
 import com.mtt.util.pojo.PictureResult;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +15,8 @@ import java.util.Date;
 
 @Service
 public class PictureServiceImpl implements PictureService {
+
+    private static Logger logger = Logger.getLogger(PictureServiceImpl.class.getName());
 
     @Value("${FILE_UPLOAD_PATH}")
     private String fileUploadPath;
@@ -45,13 +48,14 @@ public class PictureServiceImpl implements PictureService {
 
     private String saveFile(MultipartFile uploadFile){
         String filePath = new SimpleDateFormat("yyyy/MM/dd/").format(new Date());
-        String originFileName = uploadFile.getName();
+        String originFileName = uploadFile.getOriginalFilename();
+        logger.debug(originFileName);
         String newFileName = IDUtil.genImageID() + originFileName.substring(originFileName.lastIndexOf("."));
         try {
             FtpUtil.uploadFile(FTP_SERVER_IP,FTP_SERVER_PORT,FTP_SERVER_USERNAME,FTP_SERVER_PASSWORD,
-            filePath,newFileName,uploadFile.getInputStream());
+                    fileUploadPath+filePath,newFileName,uploadFile.getInputStream());
             return filePath+newFileName;
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
